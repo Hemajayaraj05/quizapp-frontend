@@ -10,7 +10,7 @@ function QuestionList({refresh}) {
   const quizId=localStorage.getItem("quizId");
   const fetchQuestions=async()=>{
     try{
-      const response=await axios.get(`http://localhost:3000/api/auth/questions/list?quizId=${quizId}`)
+      const response=await axios.get(`http://localhost:3001/api/auth/questions/list?quizId=${quizId}`)
 
       setQuestions(response.data);
 

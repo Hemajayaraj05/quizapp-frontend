@@ -20,7 +20,7 @@ export default function LoginCard() {
 
     try {
       const login = await axios.post(
-        "http://localhost:3000/api/auth/login",
+        "http://localhost:3001/api/auth/login",
         form
       );
       console.log(login);

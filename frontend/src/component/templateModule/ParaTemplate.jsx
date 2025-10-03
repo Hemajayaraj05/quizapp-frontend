@@ -14,7 +14,7 @@ function ParaTemplate({ onQuestionAdded }) {
      const handleSave = async () => {
        try {
          const ParagraphQuestion = await axios.post(
-           "http://localhost:3000/api/auth/questions/create",
+           "http://localhost:3001/api/auth/questions/create",
            { quizId, type: "paragraph", question: ParaQuestionText, answer: paraAnswer }
          );
          console.log(ParagraphQuestion);
