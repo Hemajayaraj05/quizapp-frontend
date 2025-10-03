@@ -3,7 +3,7 @@ version: '3.9'
 services:
   frontend:
     build: ./frontend
-    container_name: quizapp_frontend
+    container_name: new_quizapp_frontend
     restart: always
     ports:
       - "8080:80"
