@@ -23,8 +23,6 @@ function QuizList() {
         });
 
       
-
-        
         setQuizzes(Array.isArray(res.data) ? res.data : []);
       } catch (err) {
         console.error("Error fetching quizzes:", err);
@@ -39,7 +37,12 @@ function QuizList() {
     fetchQuizzes();
   }, []); 
 
-  const handleQuizClick = (quizId) => {
+  const handleQuizClick = async(quizId) => {
+
+    // const response = await axios.get(`http://localhost:3001/api/auth/quizzes/${quizId}`);
+
+
+   
     navigate(`/quiz/${quizId}`); 
   };
 
