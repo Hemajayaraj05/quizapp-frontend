@@ -13,7 +13,7 @@ function OnemarkTemplate({ onQuestionAdded }) {
   const handleSave = async () => {
     try {
       const OnemarkQuestion = await axios.post(
-        "http://localhost:3001/api/auth/questions/create",
+        "http://localhost:4422/api/auth/questions/create",
         { quizId, type: "onemark", question: QuestionText, answer: answer }
       );
       console.log(OnemarkQuestion);

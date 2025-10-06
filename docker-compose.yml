@@ -1,4 +1,4 @@
-version: '3.9'
+
 
 services:
   frontend:
@@ -8,4 +8,4 @@ services:
     ports:
       - "8080:80"
     environment:
-      REACT_APP_API_URL: http://host.docker.internal:3001
+      REACT_APP_API_URL: http://host.docker.internal:4422

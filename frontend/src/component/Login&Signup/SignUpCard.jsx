@@ -18,7 +18,7 @@ export default function SignUpCard() {
     e.preventDefault();
     try {
       const res = await axios.post(
-        "http://localhost:3001/api/auth/signup",
+        "http://localhost:4422/api/auth/signup",
         form
       );
       console.log(res);

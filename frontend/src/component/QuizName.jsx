@@ -13,7 +13,7 @@ function QuizName(){
     
     const handleNavigationToAddQuestions=async()=>{
          try{
-            const res=await axios.post("http://localhost:3001/api/auth/quiz/create",{quizname},
+            const res=await axios.post("http://localhost:4422/api/auth/quiz/create",{quizname},
                 {
                     headers:{
                     Authorization :`Bearer ${token}`

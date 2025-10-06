@@ -12,7 +12,7 @@ function TrueOrFalseTemplate({ onQuestionAdded }) {
   const quizId=localStorage.getItem('quizId');
   const handleSave = async () => {
     const TrueOrFalseResponse = await axios.post(
-      "http://localhost:3001/api/auth/questions/create",
+      "http://localhost:4422/api/auth/questions/create",
       {
         quizId,
         type: "TrueOrFalse",

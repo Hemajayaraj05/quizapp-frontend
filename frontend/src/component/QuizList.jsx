@@ -18,7 +18,7 @@ function QuizList() {
           return;
         }
 
-        const res = await axios.get("http://localhost:3001/api/auth/quiz/list", {
+        const res = await axios.get("http://localhost:4422/api/auth/quiz/list", {
           headers: { Authorization: `Bearer ${token}` },
         });
 
