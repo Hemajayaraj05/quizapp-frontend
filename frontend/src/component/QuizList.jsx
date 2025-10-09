@@ -39,11 +39,7 @@ function QuizList() {
 
   const handleQuizClick = async(quizId) => {
 
-    // const response = await axios.get(`http://localhost:3001/api/auth/quizzes/${quizId}`);
-
-
-   
-    navigate(`/quiz/${quizId}`); 
+   navigate(`/quizId/${quizId}`); 
   };
 
   if (loading) {

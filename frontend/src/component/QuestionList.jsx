@@ -1,17 +1,19 @@
 import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import { Card, Button, TextField, Dialog, DialogActions, DialogTitle } from "@mui/material";
 import axios from "axios";
 function QuestionList({refresh}) {
+  const { quizId } = useParams();
   const [questions, setQuestions] = useState([]);
      const [openEdit, setOpenEdit] = useState(false);
   const [editingQuestion, setEditingQuestion] = useState(null);
  
 
-  const quizId=localStorage.getItem("quizId");
+    
   const fetchQuestions=async()=>{
+     if (!quizId) return;
     try{
       const response=await axios.get(`http://localhost:3001/api/auth/questions/list?quizId=${quizId}`)
-
       setQuestions(response.data);
 
     }catch(err)
@@ -23,7 +25,7 @@ function QuestionList({refresh}) {
 
    useEffect(()=>{
     fetchQuestions();
-  },[refresh])
+  },[quizId,refresh])
 
 
 

@@ -21,6 +21,7 @@ function App() {
           <Route path="/student-dashboard" element={<StudentDashboard />} />
           <Route path="/teacher-dashboard" element={<TeacherDashboard />} /> 
           <Route path="/teacher-dashboard/add-questions" element={<AddQuestions/>}/>
+          <Route path = "/quizId/:quizId" element ={<QuestionList />}/>
         </Route>   
       </Routes>
 
