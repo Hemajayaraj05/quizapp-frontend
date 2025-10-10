@@ -31,13 +31,15 @@ function QuestionList({ refresh }) {
     fetchQuestions();
   }, [quizId, refresh]);
 
-  const handleDelete = async (questionId,quizId)=> {
-
+  const handleDelete = async (questionId, quizId) => {
     try {
       const response = await axios.delete(
-        `http://localhost:3001/api/auth/questions/delete`,{params:{questionId,quizId}}
+        `http://localhost:3001/api/auth/questions/delete`,
+        { params: { questionId, quizId } }
       );
-      setQuestions(response.data);
+      setQuestions((prev) =>
+        prev.map((q) => (q.id === editingQuestion.id ? response.data : q))
+      );
     } catch (err) {
       console.log(err);
     }
@@ -53,8 +55,30 @@ function QuestionList({ refresh }) {
     setOpenEdit(false);
   };
 
-  const handleSaveEdit = () => {
-    console.log("will do later", id);
+  const handleSaveEdit = async () => {
+    try {
+      const response = await axios.put(
+        `http://localhost:3001/api/auth/questions/update`,
+        {
+          id: editingQuestion.id,
+          quizid: editingQuestion.quizid,
+          questionText: editingQuestion.questionText,
+          question_type:editingQuestion.question_type,
+          answer: editingQuestion.answer,
+        }
+      );
+
+      setQuestions((prev) =>
+        prev.map((q) => (q.id === editingQuestion.id ? response.data : q))
+      );
+
+      alert("Questions updated successfully");
+      fetchQuestions();
+      handleCloseEdit();
+      
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   if (!questions.length)
@@ -65,12 +89,13 @@ function QuestionList({ refresh }) {
     );
 
   return (
-    <div className="mt-6 p-4 w-3/4 border-3 rounded-2xl border-purple-700">
+    <div className="mt-6 p-4 w-3/4 border-3 flex flex-col rounded-2xl border-purple-700">
       <h2 className="text-xl font-bold mb-4">Questions</h2>
-      {questions.map((q) => (
-        <div key={q.id} className="mb-3 pb-2 ">
+     
+      {questions.map((q,index) => (
+        <div key={q.id ?? index} className="mb-3 pb-2">
           <p className="font-semibold">
-            {q.question_type.toUpperCase()}: {q.questionText}
+            {(q.question_type || "Unknown").toUpperCase()}: {q.questionText}
           </p>
           <p className="text-gray-700">Answer: {q.answer}</p>
 
@@ -93,31 +118,38 @@ function QuestionList({ refresh }) {
             </Button>
           </div>
         </div>
+      
       ))}
-
+ 
       <Dialog open={openEdit} onClose={handleCloseEdit} maxWidth="sm" fullWidth>
         <DialogTitle>Edit Question</DialogTitle>
-        <div className="flex flex-col gap-5 p-5">
-          <TextField
-            label="Question"
-            value={editingQuestion?.questionText || ""}
-            onChange={(e) =>
-              setEditingQuestion({
-                ...editingQuestion,
-                questionText: e.target.value,
-              })
-            }
-            fullWidth
-          />
-          <TextField
-            label="Answer"
-            value={editingQuestion?.answer || ""}
-            onChange={(e) =>
-              setEditingQuestion({ ...editingQuestion, answer: e.target.value })
-            }
-            fullWidth
-          />
-        </div>
+        {editingQuestion && (
+          <div className="flex flex-col gap-5 p-5">
+            <TextField
+              label="Question"
+              value={editingQuestion.questionText}
+              onChange={(e) =>
+                setEditingQuestion({
+                  ...editingQuestion,
+                  questionText: e.target.value,
+                })
+              }
+              fullWidth
+            />
+            <TextField
+              label="Answer"
+              value={editingQuestion.answer}
+              onChange={(e) =>
+                setEditingQuestion({
+                  ...editingQuestion,
+                  answer: e.target.value,
+                })
+              }
+              fullWidth
+            />
+          </div>
+        )}
+
         <DialogActions>
           <Button
             onClick={handleCloseEdit}
