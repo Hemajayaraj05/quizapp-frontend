@@ -2,13 +2,15 @@ import { useState } from "react";
 import SignUpButton from "./SignUpButton";
 import { Link } from "react-router-dom";
 import axios from "axios";
+
 export default function SignUpCard() {
   const [form, setForm] = useState({
     username: "",
     emailid: "",
     password: "",
     role: "student",
-  });
+  }); 
+
 
   const handleInputChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -23,6 +25,8 @@ export default function SignUpCard() {
       );
       console.log(res);
       alert("Signup success");
+    
+      
     } catch (err) {
       console.log("Err in signup", err);
     }
