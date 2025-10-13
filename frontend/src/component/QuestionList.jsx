@@ -1,3 +1,4 @@
+import {toast} from 'react-toastify'
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import {
@@ -24,6 +25,7 @@ function QuestionList({ refresh }) {
       setQuestions(response.data);
     } catch (err) {
       console.log(err);
+      toast.error('Failed to show questions')
     }
   };
 

@@ -1,8 +1,13 @@
+import {toast} from 'react-toastify'
 import { useState } from "react";
 import SignUpButton from "./SignUpButton";
 import { Link } from "react-router-dom";
 import axios from "axios";
+<<<<<<< HEAD
 
+=======
+import { useNavigate } from 'react-router-dom';
+>>>>>>> origin/main
 export default function SignUpCard() {
   const [form, setForm] = useState({
     username: "",
@@ -11,6 +16,8 @@ export default function SignUpCard() {
     role: "student",
   }); 
 
+
+  const navigate = useNavigate();
 
   const handleInputChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -24,11 +31,17 @@ export default function SignUpCard() {
         form
       );
       console.log(res);
+<<<<<<< HEAD
       alert("Signup success");
     
       
+=======
+      toast.success("Signup success");
+      navigate('/login')
+>>>>>>> origin/main
     } catch (err) {
       console.log("Err in signup", err);
+      toast.error("Signin Failed!")
     }
   };
 

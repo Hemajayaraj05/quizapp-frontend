@@ -2,7 +2,7 @@ import { Button, TextField } from "@mui/material";
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-
+import {toast} from 'react-toastify';
 
 function QuizName(){
     const navigate=useNavigate();
@@ -19,7 +19,7 @@ function QuizName(){
                     Authorization :`Bearer ${token}`
                 }}
             )
-
+            toast.success("Created quiz name successfully")
              console.log(res);
              console.log("quizid is",res.data.id);
              localStorage.setItem("quizId",res.data.id);

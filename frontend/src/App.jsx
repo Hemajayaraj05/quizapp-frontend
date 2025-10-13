@@ -7,6 +7,8 @@ import TeacherDashboard from "./pages/TeacherDashboard";
 import Layout from './component/Layout';
 import AddQuestions from './pages/AddQuestions';
 import QuestionList from './component/QuestionList';
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   return (
@@ -26,6 +28,7 @@ function App() {
       </Routes>
 
     </BrowserRouter>
+    <ToastContainer position='top-right' autoClose={3000}/> 
 
     
     </>

@@ -1,3 +1,4 @@
+import { toast } from "react-toastify";
 import { useState } from "react";
 import LoginButton from "./LoginButton";
 import { Link, useNavigate } from "react-router-dom";
@@ -26,25 +27,28 @@ export default function LoginCard() {
       console.log(login);
       localStorage.setItem("token", login.data.token);
       localStorage.setItem("role", login.data.role);
-      alert("Login success");
-      if (login.data.role) {
-        if (login.data.role === "student") {
-          navigate("/student-dashboard");
-        } else if (login.data.role === "teacher") {
-          navigate("/teacher-dashboard");
-        }
-      } else {
-        setError("Invalid email or password");
+      
+      // toast.success("Login success");
+        if (login.data.role) {
+      toast.success("Login success");
+      if (login.data.role === "student") {
+        navigate("/student-dashboard");
+      } else if (login.data.role === "teacher") {
+        navigate("/teacher-dashboard");
       }
-    } catch (err) {
-      setError(err.response?.data?.error || "Login failed");
+    } else {
+      toast.error("Invalid email or password");
+      setError("Invalid email or password");
     }
-    finally{
-      setForm("");
-    }
+  } catch (err) {
+    const errorMsg = err.response?.data?.error || "Login failed";
+    toast.error(errorMsg); 
+    setError(errorMsg);
+  } finally {
+    setForm({ emailid: "", password: "" });
+  }
+};
 
-
-  };
 
   return (
     <>

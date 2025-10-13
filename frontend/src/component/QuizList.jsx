@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { Button } from "@mui/material";
+import {toast} from 'react-toastify'
 import {
   Button,
   Dialog,
@@ -40,6 +42,8 @@ function QuizList() {
       } catch (err) {
         alert("Error fetching quizzes");
         console.error("Error fetching quizzes:", err);
+        toast.error('Failed to fetch quizzes!')
+        
         setError(
           err.response?.data?.message ||
             "Failed to fetch quizzes. Please try again."
