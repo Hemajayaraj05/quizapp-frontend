@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";  
 import { useNavigate } from "react-router-dom"; 
 import axios from "axios";
+import { Button } from "@mui/material";
 
 function QuizList() {
   const [quizzes, setQuizzes] = useState([]); // always an array
@@ -70,11 +71,30 @@ function QuizList() {
                 onClick={() => handleQuizClick(quiz.id)}
               >
                 <div className="flex items-center justify-between">
-                  <span className="font-semibold text-gray-800">#{index + 1}</span>
+                  <span className="font-semibold text-gray-800 p-3 rounded-full bg-blue-300">#{index + 1}</span>
                   <h3 className="text-lg font-semibold text-gray-800 hover:text-purple-600">
-                    {quiz.quizname}
+                    {quiz.quizname.toUpperCase()}
                   </h3>
+                  <div className="flex gap-8">
+                   <Button
+              variant="contained"
+              size="small"
+              color="secondary"
+              
+            >
+              Edit
+            </Button>
+            <Button
+              variant="contained"
+              color="error"
+              size="small"
+              
+            >
+              Delete
+            </Button>
+            </div>
                 </div>
+                
               </div>
             ))}
           </div>

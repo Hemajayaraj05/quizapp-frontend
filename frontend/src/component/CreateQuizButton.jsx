@@ -1,7 +1,7 @@
 import { Button } from "@mui/material";
 import QuizName from "./QuizName";
 import { useState } from "react";
-import QuizList from "./QuizList";
+
 function CreateQuizButton() {
     const [showQuizName, setShowQuizName] = useState(false);
 
@@ -15,7 +15,7 @@ function CreateQuizButton() {
       </div>
 
       {showQuizName && <QuizName/>}
-      <QuizList/>
+    
     </div>
   );
 }
