@@ -56,7 +56,7 @@ function QuestionList({ refresh }) {
   };
 
   const handleSaveEdit = async () => {
-    try {
+    try { ``
       const response = await axios.put(
         `http://localhost:3001/api/auth/questions/update`,
         {
