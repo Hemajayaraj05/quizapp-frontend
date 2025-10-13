@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom"; 
 import axios from "axios";
 import { Button } from "@mui/material";
+import {toast} from 'react-toastify'
 
 function QuizList() {
   const [quizzes, setQuizzes] = useState([]); // always an array
@@ -27,6 +28,8 @@ function QuizList() {
         setQuizzes(Array.isArray(res.data) ? res.data : []);
       } catch (err) {
         console.error("Error fetching quizzes:", err);
+        toast.error('Failed to fetch quizzes!')
+        
         setError(
           err.response?.data?.message || "Failed to fetch quizzes. Please try again."
         );

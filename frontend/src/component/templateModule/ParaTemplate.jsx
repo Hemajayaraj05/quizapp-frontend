@@ -4,7 +4,7 @@ import SaveButton from "./commonComponents/SaveButton";
 import CancelButton from "./commonComponents/CancelButton";
 import { useState } from "react";
 import axios from "axios";
-
+import {toast} from 'react-toastify'
 
 function ParaTemplate({ onQuestionAdded }) {
   const [paraAnswer, setparaAnswer] = useState("");
@@ -18,12 +18,13 @@ function ParaTemplate({ onQuestionAdded }) {
            { quizId, type: "paragraph", question: ParaQuestionText, answer: paraAnswer }
          );
          console.log(ParagraphQuestion);
-         alert("Paragraph question added");
+         toast.success("Paragraph question added");
           if (onQuestionAdded) onQuestionAdded();
          setParaQuestionText("");
          setparaAnswer("");
        } catch (err) {
          console.log(err, "Failed to save the paragraph question");
+         toast.error("Failed to add!")
        }
      };
    
