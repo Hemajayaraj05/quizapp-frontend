@@ -19,7 +19,7 @@ function QuizName(){
                     Authorization :`Bearer ${token}`
                 }}
             )
-            toast.success("Created quiz name successfully")
+            toast.success("Created quiz successfully")
              console.log(res);
              console.log("quizid is",res.data.id);
              localStorage.setItem("quizId",res.data.id);
@@ -27,6 +27,7 @@ function QuizName(){
          }
          catch(err)
          {
+            toast.error("Failed to create quiz")
           console.log(err);
          }    
     }

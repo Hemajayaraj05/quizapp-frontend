@@ -39,11 +39,13 @@ function QuestionList({ refresh }) {
         `http://localhost:3001/api/auth/questions/delete`,
         { params: { questionId, quizId } }
       );
+      toast.success("Question deleted successfully")
       fetchQuestions();
       setQuestions((prev) =>
         prev.map((q) => (q.id === editingQuestion.id ? response.data : q))
       );
     } catch (err) {
+      toast.error("Error in deleting questions")
       console.log(err);
     }
   };
