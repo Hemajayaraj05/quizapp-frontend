@@ -95,9 +95,10 @@ function QuizList() {
 
   const handleQuizDelete = async (quizId) => {
     document.activeElement?.blur();
+      const token = localStorage.getItem("token");
     try {
       await axios.delete(
-        `http://localhost:3001/api/auth/quiz/delete/${quizId}`
+        `http://localhost:3001/api/auth/quiz/delete/${quizId}`, { headers: { Authorization: `Bearer ${token}` } }
       );
       toast.success("Quiz deleted successfully");
       setQuizzes((prev) => prev.filter((quiz) => quiz.id !== quizId));
