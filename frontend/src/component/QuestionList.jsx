@@ -31,7 +31,7 @@ function QuestionList({ refresh }) {
 
   useEffect(() => {
     fetchQuestions();
-  }, [quizId, refresh]);
+  }, [quizId,refresh]);
 
   const handleDelete = async (questionId, quizId) => {
     try {
@@ -39,6 +39,7 @@ function QuestionList({ refresh }) {
         `http://localhost:3001/api/auth/questions/delete`,
         { params: { questionId, quizId } }
       );
+      fetchQuestions();
       setQuestions((prev) =>
         prev.map((q) => (q.id === editingQuestion.id ? response.data : q))
       );
@@ -58,7 +59,7 @@ function QuestionList({ refresh }) {
   };
 
   const handleSaveEdit = async () => {
-    try { ``
+    try { 
       const response = await axios.put(
         `http://localhost:3001/api/auth/questions/update`,
         {
