@@ -18,6 +18,7 @@ function OnemarkTemplate({ onQuestionAdded }) {
         { quizId, type: "onemark", question: QuestionText, answer: answer }
       );
       console.log(OnemarkQuestion);
+      // console.log(OnemarkQuestion.status);
       toast.success("One mark question added");
        if (onQuestionAdded) onQuestionAdded();
       setQuestionText("");

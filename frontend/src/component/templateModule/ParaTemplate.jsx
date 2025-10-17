@@ -18,6 +18,7 @@ function ParaTemplate({ onQuestionAdded }) {
            { quizId, type: "paragraph", question: ParaQuestionText, answer: paraAnswer }
          );
          console.log(ParagraphQuestion);
+        //  console.log(ParagraphQuestion.status)
          toast.success("Paragraph question added");
           if (onQuestionAdded) onQuestionAdded();
          setParaQuestionText("");

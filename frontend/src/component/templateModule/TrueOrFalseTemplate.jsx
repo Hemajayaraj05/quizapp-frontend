@@ -23,6 +23,7 @@ function TrueOrFalseTemplate({ onQuestionAdded }) {
     );
 
     console.log(TrueOrFalseResponse);
+    console.log(TrueOrFalseResponse.status);
     toast.success("TrueOrFalse question added");
     
      if (onQuestionAdded) onQuestionAdded();
