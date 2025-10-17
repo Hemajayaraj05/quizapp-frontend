@@ -1,17 +1,20 @@
- import CreateQuizButton from "../component/CreateQuizButton";
- import QuizName from "../component/QuizName";
-import AddQuestions from "./AddQuestions";
+import CreateQuizButton from "../component/CreateQuizButton";
+import QuizList from "../component/QuizList";
 
-function TeacherDashboard(){
+function TeacherDashboard() {
+  return (
+    <div className="flex flex-col min-h-screen bg-gradient-to-b from-cyan-300 to-pink-400 p-5">
+     
+      <div className="mb-5">
+        <CreateQuizButton />
+      </div>
 
-    return (
-        <div className="flex flex-col min-h-screen bg-gradient-to-b from-cyan-300 to-pink-400 ">
-            
-            <div className="flex flex-col flex-grow"><CreateQuizButton/></div>
-         
-        </div>
-    )
-
+   
+      <div className="flex-1 overflow-auto">
+        <QuizList />
+      </div>
+    </div>
+  );
 }
 
 export default TeacherDashboard;

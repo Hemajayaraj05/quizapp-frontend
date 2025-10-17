@@ -4,6 +4,7 @@ import SaveButton from "./commonComponents/SaveButton";
 import CancelButton from "./commonComponents/CancelButton";
 import { useState } from "react";
 import axios from "axios";
+import {toast} from 'react-toastify';
 
 function TrueOrFalseTemplate({ onQuestionAdded }) {
   const [TFQuestionText, setTFQuestionText] = useState("");
@@ -22,7 +23,8 @@ function TrueOrFalseTemplate({ onQuestionAdded }) {
     );
 
     console.log(TrueOrFalseResponse);
-    alert("TrueOrFalse question added");
+    toast.success("TrueOrFalse question added");
+    
      if (onQuestionAdded) onQuestionAdded();
     setTFQuestionText("");
     setTFAnswer("");

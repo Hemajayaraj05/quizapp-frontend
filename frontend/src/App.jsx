@@ -7,6 +7,8 @@ import TeacherDashboard from "./pages/TeacherDashboard";
 import Layout from './component/Layout';
 import AddQuestions from './pages/AddQuestions';
 import QuestionList from './component/QuestionList';
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   return (
@@ -21,10 +23,12 @@ function App() {
           <Route path="/student-dashboard" element={<StudentDashboard />} />
           <Route path="/teacher-dashboard" element={<TeacherDashboard />} /> 
           <Route path="/teacher-dashboard/add-questions" element={<AddQuestions/>}/>
+          <Route path = "/quizId/:quizId" element ={<QuestionList />}/>
         </Route>   
       </Routes>
 
     </BrowserRouter>
+    <ToastContainer position='top-right' autoClose={3000}/> 
 
     
     </>

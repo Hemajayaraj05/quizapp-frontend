@@ -4,6 +4,7 @@ import SaveButton from "./commonComponents/SaveButton";
 import CancelButton from "./commonComponents/CancelButton";
 import { useState } from "react";
 import axios from "axios";
+import {toast} from 'react-toastify';
 
 function OnemarkTemplate({ onQuestionAdded }) {
   const [QuestionText, setQuestionText] = useState("");
@@ -17,12 +18,13 @@ function OnemarkTemplate({ onQuestionAdded }) {
         { quizId, type: "onemark", question: QuestionText, answer: answer }
       );
       console.log(OnemarkQuestion);
-      alert("One mark question added");
+      toast.success("One mark question added");
        if (onQuestionAdded) onQuestionAdded();
       setQuestionText("");
       setAnswer("");
     } catch (err) {
       console.log(err, "Failed to save the one mark question");
+      toast.error('Failed to save')
     }
   };
 
